@@ -11,6 +11,7 @@ public class Grid : MonoBehaviour {
 	public LayerMask setingLayer;
 	//existing twrs
 	public GameObject[] twr;
+	private int priceOfTwr;
 	//starting material of a tile
 	private Material originalMaterial;
 	//last hovered tile
@@ -18,9 +19,11 @@ public class Grid : MonoBehaviour {
 	public int m = 0;
 	//text witch shows what twr is selected
 	public GUIText twrText;
+	public MainScript mainScript;
 	public void Start () {
+		mainScript =  GameObject.FindWithTag("MainScript").GetComponent<MainScript>();
 		twrText.text = "Air Missile Tower Tier 1";
-		MainScript.UpdateGui();
+		priceOfTwr = AirMissileTwr.price;
 	}
 	public void Update () {
 		Ray beam = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -29,11 +32,12 @@ public class Grid : MonoBehaviour {
 			if (Input.GetKeyDown ("1")) {
 				twrText.text = "Air Missile Tower Tier 1";
 				m = 0;
+				priceOfTwr = AirMissileTwr.price;
 			} else if (Input.GetKeyDown ("2")) {
 				twrText.text = "Land Laser Tower Tier 1";
 				m = 1;
+				priceOfTwr = ControlOfLandLaserTwr.price;
 			}
-			MainScript.UpdateGui();
 			if (lastHitObject) {
 				lastHitObject.renderer.material = originalMaterial;
 			}
@@ -46,11 +50,11 @@ public class Grid : MonoBehaviour {
 				lastHitObject = null;
 			}
 		}
-		if (Input.GetMouseButtonDown(0) && lastHitObject && MainScript.Gold >= twr[m].price) {
+		if (Input.GetMouseButtonDown(0) && lastHitObject && MainScript.Gold >= priceOfTwr) {
 			if (lastHitObject.tag == "FreeFilde") {
 				GameObject newTwr = Instantiate(twr[m], lastHitObject.transform.position, Quaternion.identity) as GameObject;
-				MainScript.Gold -= twr[m].price;
-				MainScript.UpdateGui();
+				MainScript.Gold -= priceOfTwr;
+				mainScript.UpdateGui();
 				Vector3 temp = newTwr.transform.localEulerAngles;
 				temp.y = Random.Range(0,360);
 				newTwr.transform.localEulerAngles = temp;
@@ -58,4 +62,5 @@ public class Grid : MonoBehaviour {
 			}
 		}
 	}
+
 }

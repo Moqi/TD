@@ -26,9 +26,10 @@ public class AirMissileTwr : MonoBehaviour {
 	//spot that tilts
 	public Transform pointOfTilting;
 	//price of twr
-	public int price  = 10;
+	public static int price  = 10;
 	//pause time between shots
 	private float timeOfNextShot;
+	private int m = 0;
 	// Update is called once per frame
 	//aim and fire
 	public void Update () {

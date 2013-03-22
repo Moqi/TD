@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LaserMissile : MonoBegaviour {
+public class LaserMissile : MonoBehaviour {
 	//speed of a misle
 	public float laserSpeed = 120f;
 	//range of a missle

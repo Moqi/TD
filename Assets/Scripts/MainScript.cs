@@ -53,7 +53,7 @@ public class MainScript : MonoBehaviour {
 	public void Awake () {
 		Gold = 100;
 		lvl = 0;
-		score = 0;
+		skor = 0;
 		hpPlayer = 10;
 		//set all the gui parts
 		guiGold = GameObject.Find("Gold").guiText;
@@ -105,7 +105,7 @@ public class MainScript : MonoBehaviour {
 	public void UpdateGui () {
 		guiGold.text = "Gold: " + Gold;
 		guiPlayerHP.text = "HP: " + hpPlayer;
-		guiScore.text = "Score: " + score;
+		guiScore.text = "Score: " + skor;
 		guiLVL.text = "Lvl: " + lvl;
 	}
 	//sets next wave, its lvl and its deficulty

@@ -20,9 +20,9 @@ public class LandEnemy : MonoBehaviour {
 		mainScript = GameObject.FindWithTag("MainScript").GetComponent<MainScript>();
 		landEnemySpeed = Random.Range (speedRange.x, speedRange.y);
 		landEnemySpeed *= mainScript.constOfDif;
-		hp *= mainScript.constOfDif;
+		landEnemyHp *= mainScript.constOfDif;
 		MainScript.Gold += 10;
-		MainScript.UpdateGui();
+		mainScript.UpdateGui();
 	}
 	//move
 	public void Update () {
@@ -31,11 +31,11 @@ public class LandEnemy : MonoBehaviour {
 	}
 	//let it take dmg and be killed
 	public void TakeDmg (float dmg) {
-		hp -= dmg;
-		if (hp <= 0 && t) {
+		landEnemyHp -= dmg;
+		if (landEnemyHp <= 0 && t) {
 			audio.Play();
 			mainScript.enemyCount --;
-			MainScript.score += (int) (landEnemyHp + landEnemySpeed);
+			MainScript.skor += (int) (landEnemyHp + landEnemySpeed);
 			GameObject newExplosion;
 			newExplosion = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
 			Destroy(newExplosion, 0.2f);

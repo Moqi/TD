@@ -15,7 +15,7 @@ public class ControlOfLandLaserTwr : MonoBehaviour {
 	//position of a rotating part of a twr
 	public Transform twrRotation;
 	//price of a twr
-	public int price = 10;
+	public  static int price = 10;
 	//efect of fireing, boom
 	public GameObject efectOfFire;
 	//enemy that is beeing targeted
@@ -50,8 +50,8 @@ public class ControlOfLandLaserTwr : MonoBehaviour {
 		//starts and destroys efect of fire, and fires lasers
 		GameObject newExplosion;
 		foreach (Transform asd in spawnLaser) {
-			Instantiate(laserMissaile, ads.position, ads.rotation);
-			newExplosion = Instantiate(efectOfFire, ads.position, ads.rotation) as GameObject;
+			Instantiate(laserMissaile, asd.position, asd.rotation);
+			newExplosion = Instantiate(efectOfFire, asd.position, asd.rotation) as GameObject;
 			Destroy(newExplosion, 0.2f);
 		}
 	}

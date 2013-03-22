@@ -25,11 +25,11 @@ public class AirEnemy : MonoBehaviour {
 		airEnemySpeed *= mainScript.constOfDif;
 		hp *= mainScript.constOfDif;
 		MainScript.Gold += 10;
-		MainScript.UpdateGui();
+		mainScript.UpdateGui();
 
 	}
 	public void Update () {
-		transform.Translate(Vector3.forward * (landEnemySpeed * Time.deltaTime));
+		transform.Translate(Vector3.forward * (airEnemySpeed * Time.deltaTime));
 
 	}
 	public void TakeDmg (float dmg) {
@@ -37,7 +37,7 @@ public class AirEnemy : MonoBehaviour {
 		if (hp <= 0) {
 			audio.Play();
 			mainScript.enemyCount --;
-			MainScript.score += (int) (airEnemySpeed + temp.y + hp);
+			MainScript.skor += (int) (airEnemySpeed + temp.y + hp);
 			GameObject newExplosion;
 			newExplosion = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
 			Destroy(newExplosion, 0.2f);

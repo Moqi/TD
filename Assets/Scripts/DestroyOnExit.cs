@@ -16,7 +16,7 @@ public class DestroyOnExit : MonoBehaviour {
 			mainScript.enemyCount --;
 			MainScript.hpPlayer --;
 			MainScript.Gold -= 20;
-			MainScript.UpdateGui();
+			mainScript.UpdateGui();
 			//end game
 			if (MainScript.hpPlayer >= 0) {
 				Application.LoadLevel(0);
